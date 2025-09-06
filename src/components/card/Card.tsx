@@ -4,7 +4,7 @@ import work from "../../assets/icon-work.svg";
 
 export const Card: React.FC = () => {
   return (
-    <div className="relative flex flex-col lg:ml-8 min-w-[327px] md:min-h-[188px] md:min-w-auto my-12">
+    <div className="relative flex flex-col min-w-[327px] md:min-h-[213px] md:min-w-auto my-12 lg:ml-8">
       {/* Fondo con el ícono */}
       <div className="p-6 flex items-center gap-4 bg-[#FF8B64] rounded-2xl mb-8 overflow-hidden">
         <img
@@ -21,8 +21,8 @@ export const Card: React.FC = () => {
           <img src={ellipsis} className="h-1" alt="ellipsis" />
         </div>
 
-        <div className="flex flex-row lg:flex-col justify-between lg:justify-start items-center lg:items-start">
-          <h2 className="lg:text-[56px] text-[32px] text-white">32hrs</h2>
+        <div className="flex flex-row md:flex-col justify-between lg:justify-start items-center lg:items-start">
+          <h2 className="md:text-[56px] text-[32px] text-white">32hrs</h2>
           <p className="text-[15px] text-[#BBC0FF]">Last Week - 36hrs</p>
         </div>
       </div>
