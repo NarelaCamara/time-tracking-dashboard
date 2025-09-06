@@ -11,7 +11,7 @@ type RutineType = (typeof Rutine)[keyof typeof Rutine];
 export const Menu = () => {
   const [rutine, setRutine] = useState<RutineType>(Rutine.Monthly);
   return (
-    <div className="pb-8 min-w-[327px]  flex items-center gap-4 bg-[#1C204B] rounded-2xl mb-8">
+    <div className="min-w-[327px]  flex items-center justify-center  gap-6 bg-[#1C204B] rounded-2xl ">
       <div className="grid grid-cols-3 gap-4 p-6 relative">
         <h3
           onClick={() => setRutine(Rutine.Daily)}
