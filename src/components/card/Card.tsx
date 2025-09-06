@@ -4,7 +4,7 @@ import work from "../../assets/icon-work.svg";
 
 export const Card: React.FC = () => {
   return (
-    <div className="relative flex flex-col min-w-[327px] md:min-h-[213px] md:min-w-auto my-12 lg:ml-8">
+    <div className="relative flex flex-col min-w-[327px] md:min-h-[213px] md:min-w-auto my-12 lg:ml-8 lg:w-[255px]">
       {/* Fondo con el ícono */}
       <div className="p-6 flex items-center gap-4 bg-[#FF8B64] rounded-2xl mb-8 overflow-hidden">
         <img
