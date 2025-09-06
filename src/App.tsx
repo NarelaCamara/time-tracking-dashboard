@@ -26,8 +26,8 @@ function App() {
   ];
   return (
     <>
-      <div className="h-screen flex flex-col lg:flex-row gap-4 bg-[#0E1323] px-4 pt-16">
-        <div className="flex flex-col relative ">
+      <div className="h-screen flex flex-col lg:flex-row  md:items-center bg-[#0E1323] px-4 pt-16">
+        <div className="flex flex-col relative md:w-[612px]">
           <div className="p-8 min-w-[327px] flex items-center gap-2 bg-[#5747EA] rounded-2xl relative top-[10px] ">
             <img
               src={jeremy}
@@ -42,7 +42,8 @@ function App() {
 
           <Menu />
         </div>
-        <div>
+
+        <div className="grid grid-cols-3 grid-rows-0 gap-4 md:w-[612px]">
           {cards.map((e) => (
             <Card key={e.title} />
           ))}
