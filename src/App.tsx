@@ -39,9 +39,8 @@ function App() {
               <h2 className="text-2xl text-white">Jeremy Robson</h2>
             </div>
           </div>
-          <div className="">
-            <Menu />
-          </div>
+
+          <Menu />
         </div>
         <div>
           {cards.map((e) => (

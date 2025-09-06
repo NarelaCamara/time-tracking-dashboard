@@ -1,21 +1,24 @@
+import React from "react";
 import ellipsis from "../../assets/icon-ellipsis.svg";
 import work from "../../assets/icon-work.svg";
 
-export const Card = () => {
+export const Card: React.FC = () => {
   return (
-    <div className="flex flex-col lg:ml-8">
-      <div className="p-8 min-w-[327px] min-h-[160px] flex items-center gap-4 bg-[#FF8B64] rounded-2xl mb-8">
+    <div className="relative flex flex-col lg:ml-8 min-w-[327px] min-h-[160px] my-12">
+      {/* Fondo con el ícono */}
+      <div className="p-6 flex items-center gap-4 bg-[#FF8B64] rounded-2xl mb-8 overflow-hidden">
         <img
           src={work}
-          className="h-12 relative top-[-50px] left-[70%] "
+          className="h-[78px] relative top-[-40px] left-[70%]"
           alt="work icon"
         />
       </div>
 
-      <div className="p-8 min-w-[327px] min-h-[160px] flex flex-col gap-4 bg-[#1C204B] rounded-2xl mb-8 relative top-[-140px] ">
-        <div className=" flex justify-between items-center">
+      {/* Card superpuesta */}
+      <div className="absolute top-10 left-0 right-0 p-6 flex flex-col gap-4 bg-[#1C204B] rounded-2xl">
+        <div className="flex justify-between items-center">
           <h3 className="text-[18px] text-white">Work</h3>
-          <img src={ellipsis} className="h-1" alt="ellipsise" />
+          <img src={ellipsis} className="h-1" alt="ellipsis" />
         </div>
 
         <div className="flex flex-row lg:flex-col justify-between lg:justify-start items-center lg:items-start">
