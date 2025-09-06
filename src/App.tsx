@@ -26,7 +26,7 @@ function App() {
   ];
   return (
     <>
-      <div className="h-screen flex flex-col lg:flex-row gap-4 bg-[#0E1323] px-4 py-16">
+      <div className="h-screen flex flex-col lg:flex-row gap-4 bg-[#0E1323] px-4 pt-16">
         <div className="flex flex-col relative ">
           <div className="p-8 min-w-[327px] flex items-center gap-2 bg-[#5747EA] rounded-2xl relative top-[10px] ">
             <img
