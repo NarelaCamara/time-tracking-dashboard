@@ -27,8 +27,8 @@ function App() {
   ];
   return (
     <>
-      <div className="h-screen flex flex-col lg:flex-row m-6 md:items-center lg:justify-center bg-[#0E1323] px-4 pt-16">
-        <div className="flex flex-col relative md:w-[612px] lg:h-[520px] lg:w-[255px]">
+      <div className="h-screen flex flex-col lg:flex-row m-6 md:items-center lg:justify-center bg-[#0E1323]">
+        <div className="flex flex-col">
           <Profile image={jeremy} />
           <Menu />
         </div>
