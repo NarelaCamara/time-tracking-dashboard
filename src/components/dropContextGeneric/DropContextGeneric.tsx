@@ -2,6 +2,7 @@
 import {
   closestCenter,
   DndContext,
+  DragOverlay,
   KeyboardSensor,
   PointerSensor,
   useSensor,
@@ -43,7 +44,7 @@ export const DropContextGeneric = <T,>({
   const [activeId, setActiveId] = useState<string | null>(null);
 
   function handleDragStart(event: any) {
-    setActiveId(event.active.id);
+    setActiveId(items.find((e) => e.id === event.active.id)?.item || null);
   }
 
   function handleDragCancel() {
@@ -71,12 +72,23 @@ export const DropContextGeneric = <T,>({
             <Droppable
               key={e.id}
               id={e.id}
-              activeId={activeId}
               renderChildren={renderGenricComponent(e.item)}
             />
           );
         })}
       </SortableContext>
+
+      {/* 👇 Overlay centralizado */}
+      <DragOverlay
+        dropAnimation={{
+          duration: 500,
+          easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
+        }}
+      >
+        {activeId ? (
+          <div className="p-4">{renderGenricComponent(activeId as any)}</div>
+        ) : null}
+      </DragOverlay>
     </DndContext>
   );
 };
