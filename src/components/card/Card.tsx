@@ -2,7 +2,11 @@ import React from "react";
 import ellipsis from "../../assets/icon-ellipsis.svg";
 import work from "../../assets/icon-work.svg";
 
-export const Card: React.FC = () => {
+interface CardProps {
+  title: string;
+}
+
+export const Card: React.FC<CardProps> = ({ title }) => {
   return (
     <div className="relative flex flex-col my-12 lg:ml-8">
       {/* Fondo con el ícono */}
@@ -17,7 +21,7 @@ export const Card: React.FC = () => {
       {/* Card superpuesta */}
       <div className="absolute top-10 left-0 right-0 p-6 flex flex-col gap-4 bg-[#1C204B] rounded-2xl">
         <div className="flex justify-between items-center">
-          <h3 className="text-[18px] text-white">Work</h3>
+          <h3 className="text-[18px] text-white">{title}</h3>
           <img src={ellipsis} className="h-1" alt="ellipsis" />
         </div>
 
