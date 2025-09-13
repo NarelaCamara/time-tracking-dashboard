@@ -15,42 +15,6 @@ function App() {
       title: "Play",
       current: 10,
     },
-    {
-      title: "Work",
-      current: 32,
-      previous: 36,
-    },
-    {
-      title: "Play",
-      current: 10,
-    },
-    {
-      title: "Work",
-      current: 32,
-      previous: 36,
-    },
-    {
-      title: "Play",
-      current: 10,
-    },
-    {
-      title: "Work",
-      current: 32,
-      previous: 36,
-    },
-    {
-      title: "Play",
-      current: 10,
-    },
-    {
-      title: "Work",
-      current: 32,
-      previous: 36,
-    },
-    {
-      title: "Play",
-      current: 10,
-    },
   ];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
