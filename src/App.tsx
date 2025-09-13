@@ -66,7 +66,10 @@ function App() {
           </div>
           <div className="lg:col-span-2">
             <div className="grid grid-rows-1 md:grid-cols-3 gap-4">
-              <DropContextGeneric cards={cards} renderCard={renderCard} />
+              <DropContextGeneric
+                genericArrayOfObj={cards}
+                renderGenricComponent={renderCard}
+              />
             </div>
           </div>
         </div>
