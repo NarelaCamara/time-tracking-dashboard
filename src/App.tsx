@@ -1,11 +1,56 @@
 import jeremy from "../src/assets/image-jeremy.png";
 import { Profile } from "./components/profile/Profile";
 import { Menu } from "./components/menu/Menu";
-import { Card } from "./components/card/Card";
 import { DropContextGeneric } from "./components/dropContextGeneric/DropContextGeneric";
+import { CardLogic } from "./components/cardLogic/CardLogic";
 
 function App() {
   const cards = [
+    {
+      title: "Work",
+      current: 32,
+      previous: 36,
+    },
+    {
+      title: "Play",
+      current: 10,
+    },
+    {
+      title: "Work",
+      current: 32,
+      previous: 36,
+    },
+    {
+      title: "Play",
+      current: 10,
+    },
+    {
+      title: "Work",
+      current: 32,
+      previous: 36,
+    },
+    {
+      title: "Play",
+      current: 10,
+    },
+    {
+      title: "Work",
+      current: 32,
+      previous: 36,
+    },
+    {
+      title: "Play",
+      current: 10,
+    },
+    {
+      title: "Work",
+      current: 32,
+      previous: 36,
+    },
+    {
+      title: "Play",
+      current: 10,
+    },
     {
       title: "Work",
       current: 32,
@@ -19,7 +64,7 @@ function App() {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderCard = (e: any) => {
-    return <Card {...e} />;
+    return <CardLogic data={e} />;
   };
   return (
     <>
