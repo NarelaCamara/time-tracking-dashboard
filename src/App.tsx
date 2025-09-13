@@ -53,8 +53,9 @@ function App() {
     },
   ];
 
-  const renderCard = (e: { title: string }) => {
-    return <Card key={e.title} title={e.title} />;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const renderCard = (e: any) => {
+    return <Card {...e} />;
   };
   return (
     <>
