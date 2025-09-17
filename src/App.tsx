@@ -9,8 +9,19 @@ import social from "./assets/icon-social.svg";
 import self_care from "./assets/icon-self-care.svg";
 import play from "./assets/icon-play.svg";
 import excersice from "./assets/icon-exercise.svg";
+import { useState } from "react";
+
+export const Rutine = {
+  Daily: "Daily",
+  Weekly: "Weekly",
+  Monthly: "Monthly",
+} as const;
+
+export type RutineType = (typeof Rutine)[keyof typeof Rutine];
 
 function App() {
+  const [rutine, setRutine] = useState<RutineType>(Rutine.Monthly);
+
   const cards = [
     {
       title: "Excercise",
@@ -60,7 +71,7 @@ function App() {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const renderCard = (e: any) => {
-    return <CardLogic data={e} />;
+    return <CardLogic data={e} rutine={rutine} />;
   };
   return (
     <>
@@ -68,7 +79,7 @@ function App() {
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-1 lg:gap-4 w-full">
           <div className="lg:h-[520px] lg:col-span-1 sticky top-0 z-10">
             <Profile image={jeremy} />
-            <Menu />
+            <Menu setRutine={setRutine} rutine={rutine} />
           </div>
           <div className="lg:col-span-2">
             <div className="grid grid-rows-1 md:grid-cols-3 gap-4">

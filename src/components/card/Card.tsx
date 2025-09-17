@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ellipsis from "../../assets/icon-ellipsis.svg";
+import { Rutine, type RutineType } from "../../App";
 
 interface CardProps {
   data: {
@@ -10,10 +11,19 @@ interface CardProps {
     background: string;
   };
   handleEditCard: () => void;
+  rutine: RutineType;
 }
 
-export const Card: React.FC<CardProps> = ({ data, handleEditCard }) => {
+export const Card: React.FC<CardProps> = ({ data, handleEditCard, rutine }) => {
   const [showEdit, setshowEdit] = useState(false);
+
+  const titleCase = (rutine: RutineType) => {
+    return rutine === Rutine.Daily
+      ? "Yesterday"
+      : rutine === Rutine.Weekly
+      ? "Last Week"
+      : "Last Month";
+  };
 
   return (
     <>
@@ -54,7 +64,7 @@ export const Card: React.FC<CardProps> = ({ data, handleEditCard }) => {
               {data.current}hrs
             </h2>
             <p className="text-[15px] text-[#BBC0FF]">
-              Last Week - {data.previous}hrs
+              {titleCase(rutine)} - {data.previous}hrs
             </p>
           </div>
         </div>

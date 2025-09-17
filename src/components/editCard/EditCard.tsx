@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Rutine, type RutineType } from "../../App";
 
 type CardData = {
   image: string;
@@ -12,10 +13,19 @@ type CardData = {
 interface EditCardProps {
   setEdit: (edit: boolean) => void;
   data: CardData;
+  rutine: RutineType;
 }
 
-export const EditCard = ({ setEdit, data }: EditCardProps) => {
+export const EditCard = ({ setEdit, data, rutine }: EditCardProps) => {
   const [cardData, setCardData] = useState(data);
+
+  const titleCase = (rutine: RutineType) => {
+    return rutine === Rutine.Daily
+      ? "Yesterday"
+      : rutine === Rutine.Weekly
+      ? "Last Week"
+      : "Last Month";
+  };
 
   return (
     <div className="relative flex flex-col my-12 lg:ml-8    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full z-20">
@@ -64,7 +74,7 @@ export const EditCard = ({ setEdit, data }: EditCardProps) => {
               className="text-[15px] text-[#BBC0FF] mb-1"
               htmlFor="previous-hours"
             >
-              Last Week
+              {titleCase(rutine)}
             </label>
             <div className="flex items-center">
               <input
