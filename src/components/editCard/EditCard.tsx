@@ -1,0 +1,119 @@
+import work from "../../assets/icon-work.svg";
+import { useState } from "react";
+
+type CardData = {
+  title: string;
+  current: number;
+  previous: number;
+  // add other fields if needed
+};
+
+interface EditCardProps {
+  setEdit: (edit: boolean) => void;
+  data: CardData;
+}
+
+export const EditCard = ({ setEdit, data }: EditCardProps) => {
+  const [cardData, setCardData] = useState(data);
+
+  return (
+    <div className="relative flex flex-col my-12 lg:ml-8    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full   z-20">
+      {/* Fondo con el ícono */}
+      <div className="p-6 flex items-center gap-4 bg-[#FF8B64] rounded-2xl mb-8 overflow-hidden ">
+        <img
+          src={work}
+          className="h-[78px] relative top-[-40px] left-[70%]"
+          alt="work icon"
+        />
+      </div>
+
+      {/* Card superpuesta */}
+      <div className="absolute top-10 left-0 right-0 p-6 flex flex-col gap-4 bg-[#1C204B] rounded-2xl w-full">
+        <div className="flex justify-between items-center">
+          <select
+            value={cardData.title}
+            onChange={(e) =>
+              setCardData({ ...cardData, title: e.target.value })
+            }
+            className="w-fit text-[18px] text-white bg-[#1C204B] border-b border-[#BBC0FF] p-2 rounded"
+          >
+            <option value="Play">Play</option>
+            <option value="Excercise">Excercise</option>
+            <option value="Self care">Self care</option>
+            <option value="Social">Social</option>
+            <option value="Study">Study</option>
+            <option value="Work">Work</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center w-full gap-4">
+          <div className="flex flex-col items-start w-full">
+            <label
+              className="text-[15px] text-[#BBC0FF] mb-1 m-2   "
+              htmlFor="current-hours"
+            >
+              Hours
+            </label>
+            <input
+              id="current-hours"
+              placeholder="Hours"
+              onChange={(e) =>
+                setCardData({
+                  ...cardData,
+                  current: Number(e.target.value),
+                })
+              }
+              type="number"
+              className="md:text-[56px] text-[32px] text-white bg-[#1C204B] border-b border-[#BBC0FF] w-full"
+              value={cardData.current}
+            />
+          </div>
+
+          <div className="flex flex-col items-start w-full">
+            <label
+              className="text-[15px] text-[#BBC0FF] mb-1"
+              htmlFor="previous-hours"
+            >
+              Last Week
+            </label>
+            <div className="flex items-center">
+              <input
+                id="previous-hours"
+                placeholder="Hours previous"
+                onChange={(e) =>
+                  setCardData({
+                    ...cardData,
+                    previous: Number(e.target.value),
+                  })
+                }
+                type="number"
+                className="text-[15px] text-[#BBC0FF] bg-[#23265A] border-b-2 border-[#FF8B64] w-20 px-3 py-2 rounded-l-lg focus:outline-none focus:border-[#FFD6C2] transition-all duration-200"
+                value={cardData.previous}
+              />
+              <span className="text-[15px] text-[#BBC0FF] bg-[#23265A] px-3 py-2 rounded-r-lg border-b-2 border-[#FF8B64]">
+                hrs
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-4 mt-6">
+          <button
+            className="bg-gradient-to-r from-[#FF8B64] to-[#FFD6C2] text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform duration-200"
+            onClick={() => setEdit(false)}
+          >
+            Save
+          </button>
+          <button
+            className="bg-[#23265A] text-[#BBC0FF] font-semibold px-6 py-2 rounded-xl border-2 border-[#FF8B64] shadow-lg hover:bg-[#1C204B] hover:text-white transition-colors duration-200"
+            onClick={() => {
+              setEdit(false);
+              setCardData(data);
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
