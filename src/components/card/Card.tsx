@@ -51,7 +51,7 @@ export const Card: React.FC<CardProps> = ({ data, handleEditCard }) => {
               {data.current}hrs
             </h2>
             <p className="text-[15px] text-[#BBC0FF]">
-              Last Week - {data.title}hrs
+              Last Week - {data.previous}hrs
             </p>
           </div>
         </div>
