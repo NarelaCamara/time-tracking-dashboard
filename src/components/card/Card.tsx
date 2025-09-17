@@ -35,10 +35,10 @@ export const Card: React.FC<CardProps> = ({ data, handleEditCard }) => {
             </button>
 
             {showEdit && (
-              <div className="absolute top-10 right-6 bg-[#1C204B] p-2 rounded-lg shadow-lg">
+              <div className="absolute top-12 right-4 bg-[#1C204B] rounded-lg shadow-lg bordfer border-[#373f92] ">
                 <button
                   onClick={() => handleEditCard()}
-                  className="bg-[#1C204B] p-6 rounded-lg opacity-100 hover:opacity-70 text-white"
+                  className="bg-[#373f92] px-6 p-2 rounded-lg opacity-100 hover:opacity-70 text-white"
                 >
                   Edit
                 </button>
@@ -47,8 +47,12 @@ export const Card: React.FC<CardProps> = ({ data, handleEditCard }) => {
           </div>
 
           <div className="flex flex-row md:flex-col justify-between lg:justify-start items-center lg:items-start">
-            <h2 className="md:text-[56px] text-[32px] text-white">32hrs</h2>
-            <p className="text-[15px] text-[#BBC0FF]">Last Week - 36hrs</p>
+            <h2 className="md:text-[56px] text-[32px] text-white">
+              {data.current}hrs
+            </h2>
+            <p className="text-[15px] text-[#BBC0FF]">
+              Last Week - {data.title}hrs
+            </p>
           </div>
         </div>
       </div>

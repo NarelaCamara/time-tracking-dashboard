@@ -11,9 +11,16 @@ function App() {
       current: 32,
       previous: 36,
     },
+   
+    {
+      title: "Work",
+      current: 32,
+      previous: 36,
+    },
     {
       title: "Play",
       current: 10,
+      previous: 8
     },
     {
       title: "Work",
@@ -23,6 +30,7 @@ function App() {
     {
       title: "Play",
       current: 10,
+      previous: 8
     },
     {
       title: "Work",
@@ -32,6 +40,7 @@ function App() {
     {
       title: "Play",
       current: 10,
+      previous: 8
     },
     {
       title: "Work",
@@ -41,6 +50,7 @@ function App() {
     {
       title: "Play",
       current: 10,
+      previous: 8
     },
     {
       title: "Work",
@@ -50,15 +60,7 @@ function App() {
     {
       title: "Play",
       current: 10,
-    },
-    {
-      title: "Work",
-      current: 32,
-      previous: 36,
-    },
-    {
-      title: "Play",
-      current: 10,
+      previous: 8
     },
   ];
 
