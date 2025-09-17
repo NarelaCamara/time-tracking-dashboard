@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import ellipsis from "../../assets/icon-ellipsis.svg";
-import work from "../../assets/icon-work.svg";
 
 interface CardProps {
   data: {
     title: string;
     current: number;
     previous: number;
+    image: string;
+    background: string;
   };
   handleEditCard: () => void;
 }
@@ -18,9 +19,11 @@ export const Card: React.FC<CardProps> = ({ data, handleEditCard }) => {
     <>
       <div className="relative flex flex-col my-12 lg:ml-8">
         {/* Fondo con el ícono */}
-        <div className="p-6 flex items-center gap-4 bg-[#FF8B64] rounded-2xl mb-8 overflow-hidden">
+        <div
+          className={`p-6 flex items-center gap-4 ${data.background} rounded-2xl mb-8 overflow-hidden`}
+        >
           <img
-            src={work}
+            src={data.image}
             className="h-[78px] relative top-[-40px] left-[70%]"
             alt="work icon"
           />
@@ -38,7 +41,7 @@ export const Card: React.FC<CardProps> = ({ data, handleEditCard }) => {
               <div className="absolute top-12 right-4 bg-[#1C204B] rounded-lg shadow-lg bordfer border-[#373f92] ">
                 <button
                   onClick={() => handleEditCard()}
-                  className="bg-[#373f92] px-6 p-2 rounded-lg opacity-100 hover:opacity-70 text-white"
+                  className={`   font-semibold px-6 py-2 rounded-xl border-2 border-[#23265A] shadow-lg bg-[#1C204B] text-white transition-colors duration-200`}
                 >
                   Edit
                 </button>

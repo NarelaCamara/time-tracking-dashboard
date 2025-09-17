@@ -1,10 +1,11 @@
-import work from "../../assets/icon-work.svg";
 import { useState } from "react";
 
 type CardData = {
+  image: string;
   title: string;
   current: number;
   previous: number;
+  background: string;
   // add other fields if needed
 };
 
@@ -17,11 +18,13 @@ export const EditCard = ({ setEdit, data }: EditCardProps) => {
   const [cardData, setCardData] = useState(data);
 
   return (
-    <div className="relative flex flex-col my-12 lg:ml-8    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full   z-20">
+    <div className="relative flex flex-col my-12 lg:ml-8    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full z-20">
       {/* Fondo con el ícono */}
-      <div className="p-6 flex items-center gap-4 bg-[#FF8B64] rounded-2xl mb-8 overflow-hidden ">
+      <div
+        className={`p-6 flex items-center gap-4 ${data.background} rounded-2xl mb-8 overflow-hidden `}
+      >
         <img
-          src={work}
+          src={data.image}
           className="h-[78px] relative top-[-40px] left-[70%]"
           alt="work icon"
         />
@@ -30,20 +33,7 @@ export const EditCard = ({ setEdit, data }: EditCardProps) => {
       {/* Card superpuesta */}
       <div className="absolute top-10 left-0 right-0 p-6 flex flex-col gap-4 bg-[#1C204B] rounded-2xl w-full">
         <div className="flex justify-between items-center">
-          <select
-            value={cardData.title}
-            onChange={(e) =>
-              setCardData({ ...cardData, title: e.target.value })
-            }
-            className="w-fit text-[18px] text-white bg-[#1C204B] border-b border-[#BBC0FF] p-2 rounded"
-          >
-            <option value="Play">Play</option>
-            <option value="Excercise">Excercise</option>
-            <option value="Self care">Self care</option>
-            <option value="Social">Social</option>
-            <option value="Study">Study</option>
-            <option value="Work">Work</option>
-          </select>
+          <h3 className="text-[18px] text-white">{data.title}</h3>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center w-full gap-4">
@@ -87,10 +77,12 @@ export const EditCard = ({ setEdit, data }: EditCardProps) => {
                   })
                 }
                 type="number"
-                className="text-[15px] text-[#BBC0FF] bg-[#23265A] border-b-2 border-[#FF8B64] w-20 px-3 py-2 rounded-l-lg focus:outline-none focus:border-[#FFD6C2] transition-all duration-200"
+                className={`text-[15px] text-[#BBC0FF] bg-[#23265A] border-b-2 border-[#23265A] w-20 px-3 py-2 rounded-l-lg focus:outline-none focus:border-[#FFD6C2] transition-all duration-200`}
                 value={cardData.previous}
               />
-              <span className="text-[15px] text-[#BBC0FF] bg-[#23265A] px-3 py-2 rounded-r-lg border-b-2 border-[#FF8B64]">
+              <span
+                className={`text-[15px] text-[#BBC0FF] bg-[#23265A] px-3 py-2 rounded-r-lg border-b-2 border-[#23265A]  `}
+              >
                 hrs
               </span>
             </div>
@@ -98,13 +90,13 @@ export const EditCard = ({ setEdit, data }: EditCardProps) => {
         </div>
         <div className="flex gap-4 mt-6">
           <button
-            className="bg-gradient-to-r from-[#FF8B64] to-[#FFD6C2] text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform duration-200"
+            className={` text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform duration-200 ${data.background} `}
             onClick={() => setEdit(false)}
           >
             Save
           </button>
           <button
-            className="bg-[#23265A] text-[#BBC0FF] font-semibold px-6 py-2 rounded-xl border-2 border-[#FF8B64] shadow-lg hover:bg-[#1C204B] hover:text-white transition-colors duration-200"
+            className={`font-semibold px-6 py-2 rounded-xl border-2 border-[#23265A] shadow-lg bg-[#1C204B] text-white transition-colors duration-200`}
             onClick={() => {
               setEdit(false);
               setCardData(data);

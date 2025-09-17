@@ -3,64 +3,58 @@ import { Profile } from "./components/profile/Profile";
 import { Menu } from "./components/menu/Menu";
 import { DropContextGeneric } from "./components/dropContextGeneric/DropContextGeneric";
 import { CardLogic } from "./components/cardLogic/CardLogic";
+import work from "./assets/icon-work.svg";
+import study from "./assets/icon-study.svg";
+import social from "./assets/icon-social.svg";
+import self_care from "./assets/icon-self-care.svg";
+import play from "./assets/icon-play.svg";
+import excersice from "./assets/icon-exercise.svg";
 
 function App() {
   const cards = [
     {
-      title: "Work",
+      title: "Excercise",
       current: 32,
       previous: 36,
+      background: "bg-[#4BCF82]",
+      image: excersice,
     },
-   
-    {
-      title: "Work",
-      current: 32,
-      previous: 36,
-    },
+
     {
       title: "Play",
       current: 10,
-      previous: 8
+      previous: 8,
+      background: "bg-[#55C2E6]",
+      image: play,
     },
+    {
+      title: "Self care",
+      current: 32,
+      previous: 36,
+      background: "bg-[#F1C75B]",
+      image: self_care,
+    },
+    {
+      title: "Social",
+      current: 10,
+      previous: 8,
+      background: "bg-[#7335D2]",
+      image: social,
+    },
+    {
+      title: "Study",
+      current: 32,
+      previous: 36,
+      background: "bg-[#FF5E7D]",
+      image: study,
+    },
+
     {
       title: "Work",
       current: 32,
       previous: 36,
-    },
-    {
-      title: "Play",
-      current: 10,
-      previous: 8
-    },
-    {
-      title: "Work",
-      current: 32,
-      previous: 36,
-    },
-    {
-      title: "Play",
-      current: 10,
-      previous: 8
-    },
-    {
-      title: "Work",
-      current: 32,
-      previous: 36,
-    },
-    {
-      title: "Play",
-      current: 10,
-      previous: 8
-    },
-    {
-      title: "Work",
-      current: 32,
-      previous: 36,
-    },
-    {
-      title: "Play",
-      current: 10,
-      previous: 8
+      background: "bg-[#FF8B64]",
+      image: work,
     },
   ];
 

@@ -9,6 +9,8 @@ export const CardLogic = ({
     title: string;
     current: number;
     previous: number;
+    image: string;
+    background: string;
   };
 }) => {
   const [edit, setEdit] = useState(false);
