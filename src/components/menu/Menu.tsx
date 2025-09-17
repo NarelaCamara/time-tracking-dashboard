@@ -1,15 +1,11 @@
-import { useState } from "react";
+import { Rutine, type RutineType } from "../../App";
 
-const Rutine = {
-  Daily: "Daily",
-  Weekly: "Weekly",
-  Monthly: "Monthly",
-} as const;
+type MenuProps = {
+  rutine: RutineType;
+  setRutine: (rutine: RutineType) => void;
+};
 
-type RutineType = (typeof Rutine)[keyof typeof Rutine];
-
-export const Menu = () => {
-  const [rutine, setRutine] = useState<RutineType>(Rutine.Monthly);
+export const Menu = ({ rutine, setRutine }: MenuProps) => {
   return (
     <div className="flex items-center justify-center  gap-6 bg-[#1C204B] rounded-b-2xl lg:h-full ">
       <div className="grid grid-cols-3 lg:grid-cols-1 gap-4 p-6 relative">
