@@ -81,7 +81,7 @@ export const EditCard = ({
               }
               type="number"
               value={cardData.current || ""}
-              className="min-w-[120px] [&::-webkit-inner-spin-button]:appearance-none
+              className="min-w-[100px] [&::-webkit-inner-spin-button]:appearance-none
                 [&::-webkit-outer-spin-button]:appearance-none
                 [appearance:textfield] md:text-[56px] text-[32px] text-white bg-[#1C204B] border-b border-[#BBC0FF] w-full"
             />
