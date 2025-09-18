@@ -7,7 +7,7 @@ type MenuProps = {
 
 export const Menu = ({ rutine, setRutine }: MenuProps) => {
   return (
-    <div className="flex items-center justify-center  gap-6 bg-[#1C204B] rounded-b-2xl lg:h-full ">
+    <div className="flex items-center justify-center  gap-6 bg-[#1C204B] rounded-b-2xl ">
       <div className="grid grid-cols-3 lg:grid-cols-1 gap-4 p-6 relative">
         <h3
           onClick={() => setRutine(Rutine.Daily)}
