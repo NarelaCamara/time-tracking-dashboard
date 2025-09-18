@@ -30,19 +30,22 @@ export const EditCard = ({
     previous: data.previous,
   });
 
-  const handleTime = (value: string, type: "current" | "previous") => {
-    const numericValue =
-      Number(`${remainingTime[type] + Number(value)}`) <= hours
-        ? Number(`${value}`)
-        : 0;
+  const handleTime = (numericValue: number, type: "current" | "previous") => {
+    const totalHours = remainingTime[type] + numericValue;
+    if (numericValue < 0) {
+      numericValue = 0;
+    } else {
+      numericValue = totalHours <= hours ? numericValue : 0;
+    }
+    console.log(numericValue, totalHours, type, remainingTime[type]);
     setCardData({
-      ...data,
+      ...cardData,
       [type]: numericValue,
     });
   };
 
   return (
-    <div className="relative flex flex-col my-12 lg:ml-8    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full z-20">
+    <div className="relative flex flex-col my-12 lg:ml-8  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full z-20">
       {/* Fondo con el ícono */}
       <div
         className={`p-6 flex items-center gap-4 ${data.background} rounded-2xl mb-8 overflow-hidden `}
@@ -71,10 +74,16 @@ export const EditCard = ({
             <input
               id="current-hours"
               placeholder="Hours"
-              onChange={(e) => handleTime(e.target.value, "current")}
+              min={0}
+              inputMode="numeric"
+              onChange={(e) =>
+                handleTime(parseInt(e.target.value, 10), "current")
+              }
               type="number"
-              className="md:text-[56px] text-[32px] text-white bg-[#1C204B] border-b border-[#BBC0FF] w-full"
-              value={cardData.current}
+              value={cardData.current || ""}
+              className=" [&::-webkit-inner-spin-button]:appearance-none
+                [&::-webkit-outer-spin-button]:appearance-none
+                [appearance:textfield] md:text-[56px] text-[32px] text-white bg-[#1C204B] border-b border-[#BBC0FF] w-full"
             />
           </div>
 
@@ -87,12 +96,18 @@ export const EditCard = ({
             </label>
             <div className="flex items-center">
               <input
+                min={0}
+                inputMode="numeric"
                 id="previous-hours"
-                placeholder="Hours previous"
-                onChange={(e) => handleTime(e.target.value, "previous")}
+                placeholder="Hours"
+                onChange={(e) =>
+                  handleTime(parseInt(e.target.value, 10), "previous")
+                }
                 type="number"
-                className={`text-[15px] text-[#BBC0FF] bg-[#23265A] border-b-2 border-[#23265A] w-20 px-3 py-2 rounded-l-lg focus:outline-none focus:border-[#FFD6C2] transition-all duration-200`}
-                value={cardData.previous}
+                value={cardData.previous || ""}
+                className={` [&::-webkit-inner-spin-button]:appearance-none
+                [&::-webkit-outer-spin-button]:appearance-none
+                [appearance:textfield] text-[15px] text-[#BBC0FF] bg-[#23265A] border-b-2 border-[#23265A] w-20 px-3 py-2 rounded-l-lg focus:outline-none focus:border-[#FFD6C2] transition-all duration-200`}
               />
               <span
                 className={`text-[15px] text-[#BBC0FF] bg-[#23265A] px-3 py-2 rounded-r-lg border-b-2 border-[#23265A]  `}

@@ -38,6 +38,7 @@ export const CardLogic = ({
 
   const handleUpdateActivivy = (current: number, previous: number) => {
     const update_rutine_remainingTime = remainingTime[rutine];
+    console.log("update_rutine_remainingTime", update_rutine_remainingTime);
     setRemainingTime({
       ...remainingTime,
       [rutine]: {
@@ -45,6 +46,8 @@ export const CardLogic = ({
         previous: update_rutine_remainingTime.previous + previous,
       },
     });
+
+     console.log("update_rutine_remainingTime 0", update_rutine_remainingTime);
     setActivities({ ...data, [rutine]: { current, previous } });
   };
 
