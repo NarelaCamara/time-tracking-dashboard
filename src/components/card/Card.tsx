@@ -1,29 +1,21 @@
 import React, { useState } from "react";
 import ellipsis from "../../assets/icon-ellipsis.svg";
-import { Rutine, type RutineType } from "../../App";
 
+interface Activity {
+  title: string;
+  current: number;
+  previous: number;
+  image: string;
+  background: string;
+}
 interface CardProps {
-  data: {
-    title: string;
-    current: number;
-    previous: number;
-    image: string;
-    background: string;
-  };
-  handleEditCard: () => void;
-  rutine: RutineType;
+  data: Activity;
+  handleEditCard: (data: Activity) => void;
+  title: string;
 }
 
-export const Card: React.FC<CardProps> = ({ data, handleEditCard, rutine }) => {
+export const Card: React.FC<CardProps> = ({ data, handleEditCard, title }) => {
   const [showEdit, setshowEdit] = useState(false);
-
-  const titleCase = (rutine: RutineType) => {
-    return rutine === Rutine.Daily
-      ? "Yesterday"
-      : rutine === Rutine.Weekly
-      ? "Last Week"
-      : "Last Month";
-  };
 
   return (
     <>
@@ -50,7 +42,7 @@ export const Card: React.FC<CardProps> = ({ data, handleEditCard, rutine }) => {
             {showEdit && (
               <div className="absolute top-12 right-4 bg-[#1C204B] rounded-lg shadow-lg bordfer border-[#373f92] ">
                 <button
-                  onClick={() => handleEditCard()}
+                  onClick={() => handleEditCard(data)}
                   className={`   font-semibold px-6 py-2 rounded-xl border-2 border-[#23265A] shadow-lg bg-[#1C204B] text-white transition-colors duration-200`}
                 >
                   Edit
@@ -64,7 +56,7 @@ export const Card: React.FC<CardProps> = ({ data, handleEditCard, rutine }) => {
               {data.current}hrs
             </h2>
             <p className="text-[15px] text-[#BBC0FF]">
-              {titleCase(rutine)} - {data.previous}hrs
+              {title} - {data.previous}hrs
             </p>
           </div>
         </div>

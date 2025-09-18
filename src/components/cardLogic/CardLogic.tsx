@@ -1,34 +1,71 @@
 import { useState } from "react";
 import { Card } from "../card/Card";
 import { EditCard } from "../editCard/EditCard";
-import type { RutineType } from "../../App";
+import { Rutine, type Activity, type RutineType, type Time } from "../../App";
+
+export const Hours = {
+  Daily: 24,
+  weekly: 168,
+  Monthly: 744,
+} as const;
 
 export const CardLogic = ({
   data,
   rutine,
+  remainingTime,
+  setRemainingTime,
+  setActivities,
 }: {
-  data: {
-    title: string;
-    current: number;
-    previous: number;
-    image: string;
-    background: string;
-  };
+  data: Activity;
   rutine: RutineType;
+  remainingTime: Time;
+  setRemainingTime: (time: Time) => void;
+  setActivities: (activity: Activity) => void;
 }) => {
   const [edit, setEdit] = useState(false);
 
-  const handleEditCard = () => {
-    setEdit(true);
+  const titleCase = (rutine: RutineType) => {
+    return rutine === Rutine.Daily
+      ? "Yesterday"
+      : rutine === Rutine.weekly
+      ? "Last Week"
+      : "Last Month";
+  };
+
+  const rutineCase = (rutine: RutineType, data: Activity) => {
+    return { ...data, ...data[rutine] };
+  };
+
+  const handleUpdateActivivy = (current: number, previous: number) => {
+    const update_rutine_remainingTime = remainingTime[rutine];
+    setRemainingTime({
+      ...remainingTime,
+      [rutine]: {
+        current: update_rutine_remainingTime.current + current,
+        previous: update_rutine_remainingTime.previous + previous,
+      },
+    });
+    setActivities({ ...data, [rutine]: { current, previous } });
   };
 
   return (
     <div>
-      <Card data={data} handleEditCard={handleEditCard} rutine={rutine} />
+      <Card
+        data={rutineCase(rutine, data)}
+        handleEditCard={() => setEdit(true)}
+        title={titleCase(rutine)}
+      />
       {edit && (
         <>
           <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
-          <EditCard data={data} setEdit={setEdit} rutine={rutine} />
+          <EditCard
+            hours={Hours[rutine]}
+            remainingTime={remainingTime[rutine]}
+            data={rutineCase(rutine, data)}
+            title={titleCase(rutine)}
+            setEdit={setEdit}
+            setUpdateActivity={handleUpdateActivivy}
+          />
         </>
       )}
     </div>

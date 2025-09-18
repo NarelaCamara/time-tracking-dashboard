@@ -1,30 +1,44 @@
 import { useState } from "react";
-import { Rutine, type RutineType } from "../../App";
 
-type CardData = {
-  image: string;
+interface Activity {
   title: string;
   current: number;
   previous: number;
+  image: string;
   background: string;
-  // add other fields if needed
-};
-
-interface EditCardProps {
-  setEdit: (edit: boolean) => void;
-  data: CardData;
-  rutine: RutineType;
 }
 
-export const EditCard = ({ setEdit, data, rutine }: EditCardProps) => {
-  const [cardData, setCardData] = useState(data);
+interface EditCardProps {
+  data: Activity;
+  title: string;
+  hours: number;
+  remainingTime: { current: number; previous: number };
+  setEdit: (edit: boolean) => void;
+  setUpdateActivity: (current: number, previous: number) => void;
+}
 
-  const titleCase = (rutine: RutineType) => {
-    return rutine === Rutine.Daily
-      ? "Yesterday"
-      : rutine === Rutine.Weekly
-      ? "Last Week"
-      : "Last Month";
+export const EditCard = ({
+  data,
+  title,
+  hours,
+  remainingTime,
+  setEdit,
+  setUpdateActivity,
+}: EditCardProps) => {
+  const [cardData, setCardData] = useState({
+    current: data.current,
+    previous: data.previous,
+  });
+
+  const handleTime = (value: string, type: "current" | "previous") => {
+    const numericValue =
+      Number(`${remainingTime[type] + Number(value)}`) <= hours
+        ? Number(`${value}`)
+        : 0;
+    setCardData({
+      ...data,
+      [type]: numericValue,
+    });
   };
 
   return (
@@ -57,12 +71,7 @@ export const EditCard = ({ setEdit, data, rutine }: EditCardProps) => {
             <input
               id="current-hours"
               placeholder="Hours"
-              onChange={(e) =>
-                setCardData({
-                  ...cardData,
-                  current: Number(e.target.value),
-                })
-              }
+              onChange={(e) => handleTime(e.target.value, "current")}
               type="number"
               className="md:text-[56px] text-[32px] text-white bg-[#1C204B] border-b border-[#BBC0FF] w-full"
               value={cardData.current}
@@ -74,18 +83,13 @@ export const EditCard = ({ setEdit, data, rutine }: EditCardProps) => {
               className="text-[15px] text-[#BBC0FF] mb-1"
               htmlFor="previous-hours"
             >
-              {titleCase(rutine)}
+              {title}
             </label>
             <div className="flex items-center">
               <input
                 id="previous-hours"
                 placeholder="Hours previous"
-                onChange={(e) =>
-                  setCardData({
-                    ...cardData,
-                    previous: Number(e.target.value),
-                  })
-                }
+                onChange={(e) => handleTime(e.target.value, "previous")}
                 type="number"
                 className={`text-[15px] text-[#BBC0FF] bg-[#23265A] border-b-2 border-[#23265A] w-20 px-3 py-2 rounded-l-lg focus:outline-none focus:border-[#FFD6C2] transition-all duration-200`}
                 value={cardData.previous}
@@ -101,7 +105,10 @@ export const EditCard = ({ setEdit, data, rutine }: EditCardProps) => {
         <div className="flex gap-4 mt-6">
           <button
             className={` text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform duration-200 ${data.background} `}
-            onClick={() => setEdit(false)}
+            onClick={() => {
+              setEdit(false);
+              setUpdateActivity(cardData.current, cardData.previous);
+            }}
           >
             Save
           </button>

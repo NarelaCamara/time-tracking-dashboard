@@ -18,12 +18,12 @@ export const Menu = ({ rutine, setRutine }: MenuProps) => {
           Daily
         </h3>
         <h3
-          onClick={() => setRutine(Rutine.Weekly)}
+          onClick={() => setRutine(Rutine.weekly)}
           className={`${
-            rutine === Rutine.Weekly ? "text-white" : " text-[#7078C9]"
+            rutine === Rutine.weekly ? "text-white" : " text-[#7078C9]"
           } text-[18px]`}
         >
-          Weekly
+          weekly
         </h3>
         <h3
           onClick={() => setRutine(Rutine.Monthly)}
