@@ -81,7 +81,7 @@ export const EditCard = ({
               }
               type="number"
               value={cardData.current || ""}
-              className=" [&::-webkit-inner-spin-button]:appearance-none
+              className="min-w-[120px] [&::-webkit-inner-spin-button]:appearance-none
                 [&::-webkit-outer-spin-button]:appearance-none
                 [appearance:textfield] md:text-[56px] text-[32px] text-white bg-[#1C204B] border-b border-[#BBC0FF] w-full"
             />
@@ -105,9 +105,10 @@ export const EditCard = ({
                 }
                 type="number"
                 value={cardData.previous || ""}
-                className={` [&::-webkit-inner-spin-button]:appearance-none
+                className={`w-[50px] [&::-webkit-inner-spin-button]:appearance-none
                 [&::-webkit-outer-spin-button]:appearance-none
-                [appearance:textfield] text-[15px] text-[#BBC0FF] bg-[#23265A] border-b-2 border-[#23265A] w-20 px-3 py-2 rounded-l-lg focus:outline-none focus:border-[#FFD6C2] transition-all duration-200`}
+                [appearance:textfield] text-[15px] text-[#BBC0FF] bg-[#23265A] border-b-2 border-[#23265A]
+                px-3 py-2 rounded-l-lg focus:outline-none focus:border-[#FFD6C2] transition-all duration-200`}
               />
               <span
                 className={`text-[15px] text-[#BBC0FF] bg-[#23265A] px-3 py-2 rounded-r-lg border-b-2 border-[#23265A]  `}
