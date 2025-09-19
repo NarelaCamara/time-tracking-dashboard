@@ -171,7 +171,15 @@ function App() {
   const [remainingTime, setRemainingTime] = useState(RemainingTime_Default);
 
   const handleActivities = (updateActivity: Activity) => {
-    setActivities([...activities, updateActivity]);
+    const update_activities = activities.map((e) => {
+      if (e.title === updateActivity.title) {
+        return updateActivity;
+      } else {
+        return e;
+      }
+    });
+     
+    setActivities(update_activities);
   };
 
   const renderCard = (e: Activity) => {
