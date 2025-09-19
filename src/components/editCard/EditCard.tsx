@@ -65,7 +65,7 @@ export const EditCard = ({
       {/* Overlay: focusable programáticamente (tabIndex={-1}) y captura Escape */}
       <div
         ref={overlayRef}
-        className="fixed inset-0 z-30"
+        className="fixed inset-0 z-20"
         onClick={() => setEdit(false)}
         onKeyDown={handleKeyDown}
         tabIndex={-1} // permite focus programático sin entrar en el tab order
@@ -74,7 +74,7 @@ export const EditCard = ({
       <div
         onKeyDown={handleKeyDown}
         tabIndex={0}
-        className="absolute flex flex-col my-12 lg:ml-8  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[257px] z-20"
+        className="absolute flex flex-col my-12 lg:ml-8  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[257px] z-30"
       >
         {/* Fondo con el ícono */}
         <div
