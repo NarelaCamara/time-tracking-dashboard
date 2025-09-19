@@ -1,6 +1,6 @@
 export const Profile = ({ image }: { image: string }) => {
   return (
-    <div className="bg-[#5747EA] rounded-2xl p-8 relative top-[10px] flex lg:flex-col items-start gap-2">
+    <div className="bg-[#5747EA] rounded-2xl p-8 relative top-[10px] flex lg:flex-col items-start  justify-center gap-2 lg:h-[354px]">
       <img
         src={image}
         className="h-16 border-white border-3 rounded-full"
