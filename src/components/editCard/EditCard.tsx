@@ -74,7 +74,7 @@ export const EditCard = ({
       <div
         onKeyDown={handleKeyDown}
         tabIndex={0}
-        className="relative flex flex-col my-12 lg:ml-8  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full z-20"
+        className="absolute flex flex-col my-12 lg:ml-8  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[257px] z-20"
       >
         {/* Fondo con el ícono */}
         <div
