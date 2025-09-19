@@ -62,7 +62,7 @@ export const Card: React.FC<CardProps> = ({ data, handleEditCard, title }) => {
               />
 
               {/* 🔹 Menú Edit */}
-              <div className="absolute top-12 right-4 bg-[#1C204B] rounded-lg shadow-lg border border-[#373f92] z-20">
+              <div className="absolute top-6 -right-2 bg-[#1C204B] rounded-lg shadow-lg border border-[#373f92] z-20">
                 <button
                   onClick={() => {
                     handleEditCard(data);
