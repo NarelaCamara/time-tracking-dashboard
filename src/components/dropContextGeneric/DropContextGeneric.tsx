@@ -15,7 +15,7 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type DropContextProps<T> = {
   genericArrayOfObj: T[];
@@ -31,7 +31,8 @@ export const DropContextGeneric = <T,>({
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
 
-  const [items, setItems] = useState(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const transformGeneric = (genericArrayOfObj: T[]) => {
     let counter = 0;
     return genericArrayOfObj.map((item: any) => {
       return {
@@ -39,7 +40,9 @@ export const DropContextGeneric = <T,>({
         item,
       };
     });
-  });
+  };
+
+  const [items, setItems] = useState(transformGeneric(genericArrayOfObj));
 
   const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -50,6 +53,10 @@ export const DropContextGeneric = <T,>({
   function handleDragCancel() {
     setActiveId(null);
   }
+
+  useEffect(() => {
+    setItems(transformGeneric(genericArrayOfObj));
+  }, [genericArrayOfObj, transformGeneric]);
 
   return (
     <DndContext
